@@ -1,0 +1,10 @@
+/home/vladislav/clion-2020.2.1/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/vladislav/CLionProjects/lab-01-parser
+-- [hunter] Calculating Toolchain-SHA1
+-- [hunter] Calculating Config-SHA1
+-- [hunter] HUNTER_ROOT: /home/vladislav/.hunter
+-- [hunter] [ Hunter-ID: 9a3594a | Toolchain-ID: 9b2c9d4 | Config-ID: 48401e9 ]
+-- [hunter] GTEST_ROOT: /home/vladislav/.hunter/_Base/9a3594a/9b2c9d4/48401e9/Install (ver.: 1.8.0-hunter-p11)
+-- [hunter] NLOHMANN_JSON_ROOT: /home/vladislav/.hunter/_Base/9a3594a/9b2c9d4/48401e9/Install (ver.: 3.6.1)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vladislav/CLionProjects/lab-01-parser/cmake-build-debug
