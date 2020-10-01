@@ -7,7 +7,9 @@
 int main(){
 
   MyJsonParse List;
-  List.get_count();
+  List.get_meta();
+
+
 
 
 //  Students StudList {};

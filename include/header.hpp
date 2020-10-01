@@ -30,8 +30,9 @@ class MyJsonParse {
     public:
      MyJsonParse();
      ~MyJsonParse();
-     void get_count();
-     void get_name();
+     int get_count();
+     void get_meta();
+     void get_names(json Student, int i);
 
     private:
     json j;
