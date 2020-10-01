@@ -25,10 +25,21 @@ void MyJsonParse::get_meta()       //This method will be used by "super method" 
 
 int MyJsonParse::get_count()
 {
-  return this->StudList->_meta.count;
+    return this->StudList->_meta.count;
 }
 
-void MyJsonParse::get_names(json Student, int i)    //This method will be used by "super method" <from_json>
+void MyJsonParse::get_name(json Student, int i)    //This method will be used by "super method" <from_json>
 {
-
+    this->StudList->Items[i]->name = Student["name"];
+}
+void MyJsonParse::get_group(json Student, int i)
+{
+    if(Student["group"].is_string())
+    {
+        this->StudList->Items[i]->group = Student.get<std::string>();
+    }
+    else
+    {
+        this->StudList->Items[i]->group = Student.get<std::size_t>();
+    }
 }
