@@ -11,6 +11,16 @@ iostream
 -
 nlohmann/json.hpp
 -
+sstream
+-
+any
+-
+fstream
+-
+vector
+-
+variant
+-
 
 /home/vladislav/.hunter/_Base/9a3594a/9b2c9d4/48401e9/Install/include/nlohmann/json.hpp
 algorithm
@@ -338,10 +348,6 @@ cstring
 limits
 -
 type_traits
--
-
-/home/vladislav/CLionProjects/lab-01-parser/sources/main.cpp
-header.hpp
 -
 
 /home/vladislav/CLionProjects/lab-01-parser/sources/source.cpp

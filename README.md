@@ -96,7 +96,7 @@ using nlohmann::json;
 
 void from_json(const json& j, student_t& s) {
 
-    s.name = get_name(j.at("group"));
+    s.name = get_name(j.at("name"));
     s.group = get_group(j.at("group"));
     s.avg = get_avg(j.at("avg"));
     s.debt = get_group(j.at("debt"));
