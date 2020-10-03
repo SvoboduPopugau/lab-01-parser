@@ -148,12 +148,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/vladislav/CLionProjects/lab-01-parser/sources/Studlist.cpp">
+			<Option target="lab-01-parser"/>
+		</Unit>
 		<Unit filename="/home/vladislav/CLionProjects/lab-01-parser/sources/main.cpp">
 			<Option target="lab-01-parser"/>
 			<Option target="tests"/>
-		</Unit>
-		<Unit filename="/home/vladislav/CLionProjects/lab-01-parser/sources/source.cpp">
-			<Option target="lab-01-parser"/>
 		</Unit>
 		<Unit filename="/home/vladislav/CLionProjects/lab-01-parser/tests/test.cpp">
 			<Option target="tests"/>

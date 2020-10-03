@@ -2,12 +2,13 @@
 // Created by vladislav on 27.09.2020.
 //
 
-#include <header.hpp>
+#include <Studlist.hpp>
 
 int main(){
 
   MyJsonParse List;
   List.get_meta();
+  List.from_json();
 
 
 

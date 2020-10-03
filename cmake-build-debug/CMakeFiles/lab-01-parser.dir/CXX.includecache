@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-../include/header.hpp
+../include/Studlist.hpp
 iostream
 -
 nlohmann/json.hpp
@@ -351,10 +351,6 @@ type_traits
 -
 
 /home/vladislav/CLionProjects/lab-01-parser/sources/main.cpp
-header.hpp
--
-
-/home/vladislav/CLionProjects/lab-01-parser/sources/source.cpp
-header.hpp
+Studlist.hpp
 -
 

@@ -30,10 +30,17 @@ class MyJsonParse {
     public:
      MyJsonParse();
      ~MyJsonParse();
-     int get_count();
+
      void get_meta();
-     void get_name(json Student, int i);
-     void get_group(json Student, int i);
+     int get_count();
+
+     static std::string get_name(const json& jit);
+     static std::any get_group(const json& jit);
+     static std::any get_avg(const json& jit);
+     static std::any get_debt(const json& jit);
+
+     void item_fjson(const json& jit);
+     void from_json();
 
     private:
     json j;

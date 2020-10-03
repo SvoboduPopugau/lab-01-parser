@@ -77,18 +77,18 @@ include CMakeFiles/lab-01-parser.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/lab-01-parser.dir/flags.make
 
-CMakeFiles/lab-01-parser.dir/sources/source.cpp.o: CMakeFiles/lab-01-parser.dir/flags.make
-CMakeFiles/lab-01-parser.dir/sources/source.cpp.o: ../sources/source.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/lab-01-parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab-01-parser.dir/sources/source.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab-01-parser.dir/sources/source.cpp.o -c /home/vladislav/CLionProjects/lab-01-parser/sources/source.cpp
+CMakeFiles/lab-01-parser.dir/sources/Studlist.cpp.o: CMakeFiles/lab-01-parser.dir/flags.make
+CMakeFiles/lab-01-parser.dir/sources/Studlist.cpp.o: ../sources/Studlist.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladislav/CLionProjects/lab-01-parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab-01-parser.dir/sources/Studlist.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab-01-parser.dir/sources/Studlist.cpp.o -c /home/vladislav/CLionProjects/lab-01-parser/sources/Studlist.cpp
 
-CMakeFiles/lab-01-parser.dir/sources/source.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab-01-parser.dir/sources/source.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/lab-01-parser/sources/source.cpp > CMakeFiles/lab-01-parser.dir/sources/source.cpp.i
+CMakeFiles/lab-01-parser.dir/sources/Studlist.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab-01-parser.dir/sources/Studlist.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladislav/CLionProjects/lab-01-parser/sources/Studlist.cpp > CMakeFiles/lab-01-parser.dir/sources/Studlist.cpp.i
 
-CMakeFiles/lab-01-parser.dir/sources/source.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab-01-parser.dir/sources/source.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/lab-01-parser/sources/source.cpp -o CMakeFiles/lab-01-parser.dir/sources/source.cpp.s
+CMakeFiles/lab-01-parser.dir/sources/Studlist.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab-01-parser.dir/sources/Studlist.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladislav/CLionProjects/lab-01-parser/sources/Studlist.cpp -o CMakeFiles/lab-01-parser.dir/sources/Studlist.cpp.s
 
 CMakeFiles/lab-01-parser.dir/sources/main.cpp.o: CMakeFiles/lab-01-parser.dir/flags.make
 CMakeFiles/lab-01-parser.dir/sources/main.cpp.o: ../sources/main.cpp
@@ -105,13 +105,13 @@ CMakeFiles/lab-01-parser.dir/sources/main.cpp.s: cmake_force
 
 # Object files for target lab-01-parser
 lab__01__parser_OBJECTS = \
-"CMakeFiles/lab-01-parser.dir/sources/source.cpp.o" \
+"CMakeFiles/lab-01-parser.dir/sources/Studlist.cpp.o" \
 "CMakeFiles/lab-01-parser.dir/sources/main.cpp.o"
 
 # External object files for target lab-01-parser
 lab__01__parser_EXTERNAL_OBJECTS =
 
-liblab-01-parserd.a: CMakeFiles/lab-01-parser.dir/sources/source.cpp.o
+liblab-01-parserd.a: CMakeFiles/lab-01-parser.dir/sources/Studlist.cpp.o
 liblab-01-parserd.a: CMakeFiles/lab-01-parser.dir/sources/main.cpp.o
 liblab-01-parserd.a: CMakeFiles/lab-01-parser.dir/build.make
 liblab-01-parserd.a: CMakeFiles/lab-01-parser.dir/link.txt

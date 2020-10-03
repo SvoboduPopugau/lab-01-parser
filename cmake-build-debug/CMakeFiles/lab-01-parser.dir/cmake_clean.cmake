@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/lab-01-parser.dir/sources/Studlist.cpp.o"
   "CMakeFiles/lab-01-parser.dir/sources/main.cpp.o"
-  "CMakeFiles/lab-01-parser.dir/sources/source.cpp.o"
   "liblab-01-parserd.a"
   "liblab-01-parserd.pdb"
 )

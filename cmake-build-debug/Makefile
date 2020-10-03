@@ -167,6 +167,33 @@ tests/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
 .PHONY : tests/fast
 
+sources/Studlist.o: sources/Studlist.cpp.o
+
+.PHONY : sources/Studlist.o
+
+# target to build an object file
+sources/Studlist.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/sources/Studlist.cpp.o
+.PHONY : sources/Studlist.cpp.o
+
+sources/Studlist.i: sources/Studlist.cpp.i
+
+.PHONY : sources/Studlist.i
+
+# target to preprocess a source file
+sources/Studlist.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/sources/Studlist.cpp.i
+.PHONY : sources/Studlist.cpp.i
+
+sources/Studlist.s: sources/Studlist.cpp.s
+
+.PHONY : sources/Studlist.s
+
+# target to generate assembly for a file
+sources/Studlist.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/sources/Studlist.cpp.s
+.PHONY : sources/Studlist.cpp.s
+
 sources/main.o: sources/main.cpp.o
 
 .PHONY : sources/main.o
@@ -196,33 +223,6 @@ sources/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/sources/main.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/sources/main.cpp.s
 .PHONY : sources/main.cpp.s
-
-sources/source.o: sources/source.cpp.o
-
-.PHONY : sources/source.o
-
-# target to build an object file
-sources/source.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/sources/source.cpp.o
-.PHONY : sources/source.cpp.o
-
-sources/source.i: sources/source.cpp.i
-
-.PHONY : sources/source.i
-
-# target to preprocess a source file
-sources/source.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/sources/source.cpp.i
-.PHONY : sources/source.cpp.i
-
-sources/source.s: sources/source.cpp.s
-
-.PHONY : sources/source.s
-
-# target to generate assembly for a file
-sources/source.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/sources/source.cpp.s
-.PHONY : sources/source.cpp.s
 
 tests/test.o: tests/test.cpp.o
 
@@ -262,12 +262,12 @@ help:
 	@echo "... test"
 	@echo "... lab-01-parser"
 	@echo "... tests"
+	@echo "... sources/Studlist.o"
+	@echo "... sources/Studlist.i"
+	@echo "... sources/Studlist.s"
 	@echo "... sources/main.o"
 	@echo "... sources/main.i"
 	@echo "... sources/main.s"
-	@echo "... sources/source.o"
-	@echo "... sources/source.i"
-	@echo "... sources/source.s"
 	@echo "... tests/test.o"
 	@echo "... tests/test.i"
 	@echo "... tests/test.s"
