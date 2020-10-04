@@ -7,8 +7,9 @@
 int main(){
 
   MyJsonParse List;
-  List.get_meta();
+//  List.get_meta();
   List.from_json();
+  List.print();
 
 
 

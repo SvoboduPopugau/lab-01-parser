@@ -8,6 +8,8 @@
 #include <fstream>
 #include <vector>
 #include <variant>
+#include <cstring>
+
 using json = nlohmann::json;
 struct Item
 {
@@ -41,9 +43,12 @@ class MyJsonParse {
 
      void item_fjson(const json& jit);
      void from_json();
+     void print();
+
+     static std::string convert_to_string(const std::any& any);
 
     private:
-    json j;
+    json data;
 //    std::string MyTestString;
     Students* StudList;
 };

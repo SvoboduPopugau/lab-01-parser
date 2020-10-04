@@ -21,6 +21,8 @@ vector
 -
 variant
 -
+cstring
+-
 
 /home/vladislav/.hunter/_Base/9a3594a/9b2c9d4/48401e9/Install/include/nlohmann/json.hpp
 algorithm
@@ -350,7 +352,7 @@ limits
 type_traits
 -
 
-/home/vladislav/CLionProjects/lab-01-parser/sources/main.cpp
+/home/vladislav/CLionProjects/lab-01-parser/sources/Studlist.cpp
 Studlist.hpp
 -
 
