@@ -5,9 +5,10 @@
 MyJsonParse::MyJsonParse()
 {
     std::string filepath;
-    std::cout << "Enter full path to .json file" << std::endl;
-    std::cin >> filepath;
-    std::ifstream ifs(filepath); // TODO:1
+//    std::cout << "Enter full path to .json file" << std::endl;
+//    std::cin >> filepath;
+
+    std::ifstream ifs("../Students.json"); // TODO:1
     if(!ifs.is_open()){
       throw std::runtime_error{"Can not open json file for this path: "
                                + filepath};
