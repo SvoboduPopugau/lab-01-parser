@@ -9,6 +9,7 @@
 #include <vector>
 #include <variant>
 #include <cstring>
+#include <iterator>
 
 using json = nlohmann::json;
 struct Item

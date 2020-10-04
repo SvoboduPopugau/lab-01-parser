@@ -4,22 +4,41 @@
 
 MyJsonParse::MyJsonParse()
 {
-    std::ifstream ifs("../Students.json"); // TODO: Проверка открывается ли файл, переделать под ввод Path
-    this->data = json::parse(ifs);            // TODO: Проверка на отсутствие контента в файле
-//    this->MyTestString = data.dump();
+    std::string filepath;
+    std::cout << "Enter full path to .json file" << std::endl;
+    std::cin >> filepath;
+    std::ifstream ifs(filepath); // TODO:1
+    if(!ifs.is_open()){
+      throw std::runtime_error{"Can not open json file for this path: "
+                               + filepath};
+    }
+    this->data = json::parse(ifs);            // TODO:2
+    if(this->data.is_null()){
+      throw std::runtime_error{"This file has no content"};
+    }
+      //    this->MyTestString = data.dump();
 //    std::cout << MyTestString << std::endl;
     this->StudList = new struct Students;
     this->StudList->_meta.count = 0;
 }
 MyJsonParse::~MyJsonParse()
 {
+  if(!this->StudList->Items.empty()){
+    for(auto & Item : this->StudList->Items){
+      delete Item;
+    }
+  }
     delete this->StudList;
 }
 void MyJsonParse::get_meta()
 {
-    this->StudList->_meta.count = this->data["_meta"]["count"].get<int>();
-//    std::cout << this -> StudList -> _meta.count << std::endl;
+  if(this->data.at("_meta").is_null())          //TODO:3
+    throw std::runtime_error{"Block _meta is empty"};
+  if(this->data.at("_meta").at("count").is_null())  //TODO:4
+    throw std::runtime_error{"Block \"count\" is empty"};
 
+  this->StudList->_meta.count = this->data["_meta"]["count"].get<int>();
+//    std::cout << this -> StudList -> _meta.count << std::endl;
 }
 int MyJsonParse::get_count()
 {
@@ -27,7 +46,10 @@ int MyJsonParse::get_count()
 }
 std::string MyJsonParse::get_name(const json& jit)
 {
-   return jit.get<std::string>();
+  if(!jit.is_string()) {
+    throw std::runtime_error{"Invalid expression in name"};
+  }
+  return jit.get<std::string>();
 }
 std::any MyJsonParse::get_group(const json& jit)
 {
@@ -75,7 +97,7 @@ void MyJsonParse::from_json() {
   //      Перенос "Items" в вектор ItemVec
   data["items"].get_to(ItemsVec);
   if (ItemsVec.size() != (unsigned long)get_count())
-    std::cout << "_meta != real count";  // TODO: выкинуть из программы
+    throw std::runtime_error{"content of _meta != real count of items"};//TODO:5
   if (this->StudList->Items.empty() && get_count() != 0) {
     for (int i = 0; i < get_count(); i++) {
 //      std::cout << ItemsVec[i] << std::endl;
@@ -102,22 +124,22 @@ void MyJsonParse::print()
 
 //    std::cout <<" |Group " << i << ":"<< tmp->avg.type().name();
     if(convert_to_string(tmp->group) == "bad_any_cast") {
-      std::cout << std::endl;
-    }  // TODO: Выкинуть, тк group некорректный
+      throw std::runtime_error{"Incorrect type group"};  // TODO: 6
+    }
     if(convert_to_string(tmp->group).length() > gMax) {
       gMax = convert_to_string(tmp->group).length();
     }
 
 //    std::cout <<" |Avg " << i << ":"<< tmp->avg.type().name();
     if(convert_to_string(tmp->avg) == "bad_any_cast") {
-      std::cout << std::endl;
-    }  // TODO: Выкинуть, тк group некорректный
+      throw std::runtime_error{"Incorrect type avg"};    // TODO: 7
+    }
     if(convert_to_string(tmp->avg).length() > aMax) {
       aMax = convert_to_string(tmp->avg).length();
     }
 
     if(convert_to_string(tmp->debt) == "bad_any_cast")
-      std::cout << std::endl;                         //TODO: Выкинуть, тк group некорректный
+      throw std::runtime_error{"Incorrect type debt"};   //TODO: 8
     if(convert_to_string(tmp->debt).length() > dMax)
       dMax = convert_to_string(tmp->debt).length();
 //    std::cout <<" |Debt " << i << ":"<< tmp->debt.type().name() << std::endl;
@@ -182,7 +204,7 @@ void MyJsonParse::print()
 std::string MyJsonParse::convert_to_string(const std::any& any) {
   if(!strcmp(any.type().name(),
              "NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"))
-  {
+  { //TODO: 9
     return std::any_cast<std::string>(any);
   }
   if(!strcmp(any.type().name(),"m")) //код
@@ -192,7 +214,7 @@ std::string MyJsonParse::convert_to_string(const std::any& any) {
     std::string my_string;
     ret >> my_string;
     return my_string;
-  }
+  }//TODO:10
   if(!strcmp(any.type().name(),"d"))
   {
     std::stringstream ret;
@@ -200,7 +222,7 @@ std::string MyJsonParse::convert_to_string(const std::any& any) {
     std::string my_string;
     ret >> my_string;
     return my_string;
-  }
+  }//TODO 11
   if(!strcmp(any.type().name(),
      "St6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE"))
   {
@@ -210,10 +232,10 @@ std::string MyJsonParse::convert_to_string(const std::any& any) {
     my_stream << ret << my_string;
     my_stream >> my_string;
     return my_string + " items";
-  }
+  }//TODO 12
   if(!strcmp(any.type().name(),"Dn"))
   {
     return "Null";
-  }
+  }//TODO 13
   return "bad_any_cast";
 }
