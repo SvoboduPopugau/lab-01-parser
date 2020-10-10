@@ -34,7 +34,10 @@ class MyJsonParse {
      MyJsonParse();
      ~MyJsonParse();
 
-     void get_meta();
+     void set_data(std::string& s);
+     json get_data();
+
+     void set_count();
      int get_count();
 
      static std::string get_name(const json& jit);
@@ -44,9 +47,12 @@ class MyJsonParse {
 
      void item_fjson(const json& jit);
      void from_json();
-     void print();
 
      static std::string convert_to_string(const std::any& any);
+
+     std::string print();
+
+     void add_item(struct Item& New);
 
     private:
     json data;
@@ -54,4 +60,3 @@ class MyJsonParse {
     Students* StudList;
 };
 #endif // INCLUDE_HEADER_HPP_
-

@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-../include/Studlist.hpp
+../include/MyJsonParse.hpp
 iostream
 -
 nlohmann/json.hpp
@@ -354,7 +354,11 @@ limits
 type_traits
 -
 
-/home/vladislav/CLionProjects/lab-01-parser/sources/Studlist.cpp
-Studlist.hpp
+/home/vladislav/CLionProjects/lab-01-parser/sources/MyJsonParse.cpp
+MyJsonParse.hpp
+-
+
+/home/vladislav/CLionProjects/lab-01-parser/sources/main.cpp
+MyJsonParse.hpp
 -
 

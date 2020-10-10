@@ -148,7 +148,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/vladislav/CLionProjects/lab-01-parser/sources/Studlist.cpp">
+		<Unit filename="/home/vladislav/CLionProjects/lab-01-parser/sources/MyJsonParse.cpp">
 			<Option target="lab-01-parser"/>
 		</Unit>
 		<Unit filename="/home/vladislav/CLionProjects/lab-01-parser/sources/main.cpp">

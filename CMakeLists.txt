@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.4)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-option(BUILD_COVERAGE "Build coverage" OFF)
+option(BUILD_COVERAGE "Build coverage" ON)
 
 set(
   HUNTER_CACHE_SERVERS
@@ -33,7 +33,7 @@ find_package(nlohmann_json CONFIG REQUIRED)
 # TODO: change template word to project name and delete this comment
 add_library(lab-01-parser STATIC
   # enum your files and delete this comment
-        ${CMAKE_CURRENT_SOURCE_DIR}/sources/Studlist.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/sources/MyJsonParse.cpp
         sources/main.cpp)
 add_executable(tests
   # TODO: enum your files and delete this comment

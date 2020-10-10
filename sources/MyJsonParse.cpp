@@ -1,24 +1,9 @@
 // Copyright 2018 Your Name <your_email>
 
-#include <Studlist.hpp>
+#include <MyJsonParse.hpp>
 
 MyJsonParse::MyJsonParse()
 {
-    std::string filepath;
-//    std::cout << "Enter full path to .json file" << std::endl;
-//    std::cin >> filepath;
-
-    std::ifstream ifs("../Students.json"); // TODO:1
-    if(!ifs.is_open()){
-      throw std::runtime_error{"Can not open json file for this path: "
-                               + filepath};
-    }
-    this->data = json::parse(ifs);            // TODO:2
-    if(this->data.is_null()){
-      throw std::runtime_error{"This file has no content"};
-    }
-      //    this->MyTestString = data.dump();
-//    std::cout << MyTestString << std::endl;
     this->StudList = new struct Students;
     this->StudList->_meta.count = 0;
 }
@@ -31,15 +16,27 @@ MyJsonParse::~MyJsonParse()
   }
     delete this->StudList;
 }
-void MyJsonParse::get_meta()
+void MyJsonParse::set_data(std::string& s)
 {
-  if(this->data.at("_meta").is_null())          //TODO:3
-    throw std::runtime_error{"Block _meta is empty"};
-  if(this->data.at("_meta").at("count").is_null())  //TODO:4
-    throw std::runtime_error{"Block \"count\" is empty"};
+  std::ifstream file;
+  file.open(s);
+//  this->data = json::parse(file);
 
+  if(!file)  //TODO:
+    throw std::runtime_error("Unable to open file: " + s);
+  this->data = json::parse(file);
+  if (data.empty())
+    throw std::runtime_error("Your file is empty");
+  if (data.at("items").empty())
+    throw std::runtime_error("No items in file");
+  if (data.at("_meta").empty())
+    throw std::runtime_error("No _meta data in file");
+}
+json MyJsonParse::get_data() {
+  return data;
+}
+void MyJsonParse::set_count() {
   this->StudList->_meta.count = this->data["_meta"]["count"].get<int>();
-//    std::cout << this -> StudList -> _meta.count << std::endl;
 }
 int MyJsonParse::get_count()
 {
@@ -92,7 +89,7 @@ void MyJsonParse::item_fjson(const json& jit)
 }
 void MyJsonParse::from_json() {
   if (get_count() == 0)
-    get_meta();
+    set_count();
   //      Создание вектора объектов json
   std::vector<json> ItemsVec;
   //      Перенос "Items" в вектор ItemVec
@@ -106,7 +103,7 @@ void MyJsonParse::from_json() {
     }
   }
 }
-void MyJsonParse::print()
+std::string MyJsonParse::print()
 {
   const int spaces_w = 2;
   size_t nMax = 4;
@@ -169,38 +166,40 @@ void MyJsonParse::print()
   }
   sep += "|";
 
-  std::cout << "| name ";
+  std::stringstream out;
+  out << "| name ";
   for(size_t i = 0; i< nMax -4; i++)
-      std::cout << " ";
-  std::cout << "| group ";
+      out << " ";
+  out << "| group ";
   for(size_t i = 0; i< gMax -5; i++)
-    std::cout << " ";
-  std::cout << "| avg ";
+    out << " ";
+  out << "| avg ";
   for(size_t i = 0; i< aMax -3; i++)
-    std::cout << " ";
-  std::cout << "| debt ";
+    out << " ";
+  out << "| debt ";
   for(size_t i = 0; i< dMax -4; i++)
-    std::cout << " ";
-  std::cout << "|" << std::endl << sep << std::endl;
+    out << " ";
+  out << "|" << std::endl << sep << std::endl;
 
   for(size_t i = 0; i<arr_size; i++)
   {
     Item* temp = this->StudList->Items[i];
-    std::cout << "| ";
-    std::cout << temp->name << " ";
+    out << "| ";
+    out << temp->name << " ";
     for(size_t j = 0; j < nMax - temp->name.length(); j++)
-      std::cout << " ";
-    std::cout <<"| " << convert_to_string(temp->group) << " ";
+      out << " ";
+    out <<"| " << convert_to_string(temp->group) << " ";
     for(size_t j = 0; j < gMax - convert_to_string(temp->group).length(); j++)
-      std::cout << " ";
-    std::cout <<"| " << convert_to_string(temp->avg) << " ";
+      out << " ";
+    out <<"| " << convert_to_string(temp->avg) << " ";
     for(size_t j = 0; j < aMax - convert_to_string(temp->avg).length(); j++)
-      std::cout << " ";
-    std::cout <<"| " << convert_to_string(temp->debt) << " ";
+      out << " ";
+    out <<"| " << convert_to_string(temp->debt) << " ";
     for(size_t j = 0; j < dMax - convert_to_string(temp->debt).length(); j++)
-      std::cout << " ";
-    std::cout << "|" << std::endl << sep << std::endl;
+      out << " ";
+    out << "|" << std::endl << sep << std::endl;
   }
+  return out.str();
 }
 std::string MyJsonParse::convert_to_string(const std::any& any) {
   if(!strcmp(any.type().name(),
@@ -225,7 +224,7 @@ std::string MyJsonParse::convert_to_string(const std::any& any) {
     return my_string;
   }//TODO 11
   if(!strcmp(any.type().name(),
-     "St6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE"))
+    "St6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE"))
   {
     size_t ret = std::any_cast<std::vector<std::string> >(any).size();
     std::stringstream my_stream;
@@ -239,4 +238,9 @@ std::string MyJsonParse::convert_to_string(const std::any& any) {
     return "Null";
   }//TODO 13
   return "bad_any_cast";
+}
+void MyJsonParse::add_item(struct Item& New)
+{
+    StudList->Items.push_back(&New);
+    StudList->_meta.count++;
 }

@@ -167,32 +167,32 @@ tests/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
 .PHONY : tests/fast
 
-sources/Studlist.o: sources/Studlist.cpp.o
+sources/MyJsonParse.o: sources/MyJsonParse.cpp.o
 
-.PHONY : sources/Studlist.o
+.PHONY : sources/MyJsonParse.o
 
 # target to build an object file
-sources/Studlist.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/sources/Studlist.cpp.o
-.PHONY : sources/Studlist.cpp.o
+sources/MyJsonParse.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/sources/MyJsonParse.cpp.o
+.PHONY : sources/MyJsonParse.cpp.o
 
-sources/Studlist.i: sources/Studlist.cpp.i
+sources/MyJsonParse.i: sources/MyJsonParse.cpp.i
 
-.PHONY : sources/Studlist.i
+.PHONY : sources/MyJsonParse.i
 
 # target to preprocess a source file
-sources/Studlist.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/sources/Studlist.cpp.i
-.PHONY : sources/Studlist.cpp.i
+sources/MyJsonParse.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/sources/MyJsonParse.cpp.i
+.PHONY : sources/MyJsonParse.cpp.i
 
-sources/Studlist.s: sources/Studlist.cpp.s
+sources/MyJsonParse.s: sources/MyJsonParse.cpp.s
 
-.PHONY : sources/Studlist.s
+.PHONY : sources/MyJsonParse.s
 
 # target to generate assembly for a file
-sources/Studlist.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/sources/Studlist.cpp.s
-.PHONY : sources/Studlist.cpp.s
+sources/MyJsonParse.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-01-parser.dir/build.make CMakeFiles/lab-01-parser.dir/sources/MyJsonParse.cpp.s
+.PHONY : sources/MyJsonParse.cpp.s
 
 sources/main.o: sources/main.cpp.o
 
@@ -262,9 +262,9 @@ help:
 	@echo "... test"
 	@echo "... lab-01-parser"
 	@echo "... tests"
-	@echo "... sources/Studlist.o"
-	@echo "... sources/Studlist.i"
-	@echo "... sources/Studlist.s"
+	@echo "... sources/MyJsonParse.o"
+	@echo "... sources/MyJsonParse.i"
+	@echo "... sources/MyJsonParse.s"
 	@echo "... sources/main.o"
 	@echo "... sources/main.i"
 	@echo "... sources/main.s"
