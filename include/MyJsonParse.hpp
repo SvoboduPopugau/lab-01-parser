@@ -36,6 +36,7 @@ class MyJsonParse {
 
      void set_data(std::string& s);
      json get_data();
+     Students* get_Studlist();
 
      void set_count();
      int get_count();

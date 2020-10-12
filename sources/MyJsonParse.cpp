@@ -88,8 +88,7 @@ void MyJsonParse::item_fjson(const json& jit)
     tmp->debt = get_debt(jit.at("debt"));
 }
 void MyJsonParse::from_json() {
-  if (get_count() == 0)
-    set_count();
+  set_count();
   //      Создание вектора объектов json
   std::vector<json> ItemsVec;
   //      Перенос "Items" в вектор ItemVec
@@ -243,4 +242,7 @@ void MyJsonParse::add_item(struct Item& New)
 {
     StudList->Items.push_back(&New);
     StudList->_meta.count++;
+}
+Students* MyJsonParse::get_Studlist() {
+  return StudList;
 }
