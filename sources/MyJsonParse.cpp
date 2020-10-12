@@ -22,7 +22,7 @@ void MyJsonParse::set_data(std::string& s)
   file.open(s);
 //  this->data = json::parse(file);
 
-  if(!file)  //TODO:
+  if(!file)
     throw std::runtime_error("Unable to open file: " + s);
   this->data = json::parse(file);
   if (data.empty())
@@ -94,7 +94,7 @@ void MyJsonParse::from_json() {
   //      Перенос "Items" в вектор ItemVec
   data["items"].get_to(ItemsVec);
   if (ItemsVec.size() != (unsigned long)get_count())
-    throw std::runtime_error{"content of _meta != real count of items"};//TODO:5
+    throw std::runtime_error{"content of _meta != real count of items"};
   if (this->StudList->Items.empty() && get_count() != 0) {
     for (int i = 0; i < get_count(); i++) {
 //      std::cout << ItemsVec[i] << std::endl;
@@ -203,39 +203,39 @@ std::string MyJsonParse::print()
 std::string MyJsonParse::convert_to_string(const std::any& any) {
   if(!strcmp(any.type().name(),
              "NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"))
-  { //TODO: 9
+  {
     return std::any_cast<std::string>(any);
   }
-  if(!strcmp(any.type().name(),"m")) //код
+  if(!strcmp(any.type().name(),"m"))
   {
     std::stringstream ret;
     ret << std::any_cast<size_t>(any);
-    std::string my_string;
-    ret >> my_string;
-    return my_string;
-  }//TODO:10
+//    std::string my_string;
+//    ret >> my_string;
+    return ret.str();
+  }
   if(!strcmp(any.type().name(),"d"))
   {
     std::stringstream ret;
     ret << std::any_cast<double>(any);
-    std::string my_string;
-    ret >> my_string;
-    return my_string;
-  }//TODO 11
+//    std::string my_string;
+//    ret >> my_string;
+    return ret.str();
+  }
   if(!strcmp(any.type().name(),
     "St6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE"))
   {
     size_t ret = std::any_cast<std::vector<std::string> >(any).size();
     std::stringstream my_stream;
-    std::string my_string;
-    my_stream << ret << my_string;
-    my_stream >> my_string;
-    return my_string + " items";
-  }//TODO 12
+//    std::string my_string;
+    my_stream << ret;
+//    my_stream >> my_string;
+    return my_stream.str() + " items";
+  }
   if(!strcmp(any.type().name(),"Dn"))
   {
     return "Null";
-  }//TODO 13
+  }
   return "bad_any_cast";
 }
 void MyJsonParse::add_item(struct Item& New)

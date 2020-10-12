@@ -46,7 +46,6 @@ TEST(Print, All_is_Correct) {
     std::string str = "json_file.json";
     List.set_data(str);
     List.from_json();
-    std::cout << "Hello!!!" << std::endl;
 
     std::string res_string = \
  R"(| name          | group  | avg  | debt    |
@@ -350,4 +349,81 @@ TEST(ItemFjson,AllCorrect){
   EXPECT_EQ(4, std::any_cast<size_t>(avg));
   std::any debt = List.get_Studlist()->Items.back()->debt;
   EXPECT_EQ(res_debt, std::any_cast<std::string>(debt));
+}
+TEST(FromJson,ArrSizeNotMeta) {
+  std::string test_string =
+      R"({
+  "items": [
+    {
+      "name": "Ivanov Petr",
+      "group": "1",
+      "avg": "4.25",
+      "debt": null
+    },
+    {
+      "name": "Sidorov Ivan",
+      "group": 31,
+      "avg": 4,
+      "debt": "C++"
+    },
+    {
+      "name": "Pertov Nikita",
+      "group": "IU8-31",
+      "avg": 3.33,
+      "debt": [
+        "C++",
+        "Linux",
+        "Network"
+      ]
+    }
+  ],
+  "_meta": {
+    "count": 5
+  }
+})";
+  std::ofstream testFile;
+  testFile.open("json_file.json");
+  testFile << test_string;
+  testFile.close();
+  MyJsonParse List;
+  std::string str = "json_file.json";
+  List.set_data(str);
+  std::string res_str = "content of _meta != real count of items";
+  try {
+    List.from_json();
+  } catch (std::runtime_error& err) {
+    EXPECT_EQ(err.what(), res_str);
+  }
+}
+TEST(Convertation, Fromstring){
+  std::any a = "Hey";
+  std::string res_str = "Hey";
+  EXPECT_EQ(res_str,MyJsonParse::convert_to_string(a));
+}
+TEST(Convertation, FromInt){
+  std::any a = 12;
+  std::string res_str = "12";
+  EXPECT_EQ(res_str,MyJsonParse::convert_to_string(a));
+}
+TEST(Convertation, FromDouble){
+  std::any a = 4.24;
+  std::string res_str = "4.24";
+  EXPECT_EQ(res_str,MyJsonParse::convert_to_string(a));
+}
+TEST(Convertation, FromVector){
+  std::vector<std::string> vec{"C++,Linux"};
+  std::any a = vec;
+  std::string res_str = "2 Items";
+  EXPECT_EQ(res_str,MyJsonParse::convert_to_string(a));
+}
+TEST(Convertation, FromNull){
+  std::any a = nullptr;
+  std::string res_str = "Null";
+  EXPECT_EQ(res_str,MyJsonParse::convert_to_string(a));
+}
+TEST(Convertation, BadCast){
+  Item structure;
+  std::any a = structure;
+  std::string res_str = "bad_any_cast";
+  EXPECT_EQ(res_str,MyJsonParse::convert_to_string(a));
 }
