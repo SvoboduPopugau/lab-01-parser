@@ -631,8 +631,6 @@ gtest/gtest.h
 -
 fstream
 -
-nlohmann/json.hpp
--
 MyJsonParse.hpp
 /home/vladislav/CLionProjects/lab-01-parser/tests/MyJsonParse.hpp
 
